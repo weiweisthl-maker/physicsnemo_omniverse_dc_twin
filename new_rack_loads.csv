@@ -1,0 +1,2 @@
+rack_id,x_min,x_max,y_min,y_max,z_min,z_max,heat_kw
+TEST_LOAD_ZONE,4.5,7.6,0.0,4.8,8.9,18.1,65

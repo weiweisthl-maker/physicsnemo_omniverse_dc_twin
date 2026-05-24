@@ -1,0 +1,531 @@
+{
+  "case_dir": "data\\raw_cadence_vtk\\case_001",
+  "keywords": [
+    "rack",
+    "cabinet",
+    "server",
+    "equipment",
+    "device",
+    "unit",
+    "name",
+    "id",
+    "label",
+    "power",
+    "load",
+    "heat",
+    "kw",
+    "watt",
+    "source",
+    "generation",
+    "flux",
+    "boundary",
+    "bc"
+  ],
+  "files": [
+    {
+      "file": "data\\raw_cadence_vtk\\case_001\\VTM\\region_0.vtu",
+      "pyvista_hits": [],
+      "xml_hits": [
+        {
+          "xml_tag": "VTKFile",
+          "attribute": "type",
+          "value": "UnstructuredGrid",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ],
+      "raw_text_hits": [
+        {
+          "line": 1,
+          "text": "<VTKFile type=\"UnstructuredGrid\" version=\"1.0\" byte_order=\"LittleEndian\" header_type=\"UInt64\">",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 2,
+          "text": "<UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 7,
+          "text": "<DataArray type=\"Float32\" Name=\"Temperature (C)\" format=\"ascii\" RangeMin=\"24.5973\" RangeMax=\"38.7638\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 97051,
+          "text": "<DataArray type=\"Float32\" Name=\"Pressure (Pa)\" format=\"ascii\" RangeMin=\"-26.276\" RangeMax=\"109.037\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 194095,
+          "text": "<DataArray type=\"Float32\" Name=\"Velocity (m/s)\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"-12.5815\" RangeMax=\"11.9813\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 485224,
+          "text": "<DataArray type=\"Float64\" Name=\"Points\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"0\" RangeMax=\"18.61\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 834386,
+          "text": "<DataArray type=\"Int64\" Name=\"connectivity\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"698314\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 1610722,
+          "text": "<DataArray type=\"Int64\" Name=\"offsets\" format=\"ascii\" RangeMin=\"8\" RangeMax=\"4658000\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 1707766,
+          "text": "<DataArray type=\"Int64\" Name=\"types\" format=\"ascii\" RangeMin=\"12\" RangeMax=\"12\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 1804812,
+          "text": "</UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "data\\raw_cadence_vtk\\case_001\\VTM\\region_1.vtu",
+      "pyvista_hits": [],
+      "xml_hits": [
+        {
+          "xml_tag": "VTKFile",
+          "attribute": "type",
+          "value": "UnstructuredGrid",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ],
+      "raw_text_hits": [
+        {
+          "line": 1,
+          "text": "<VTKFile type=\"UnstructuredGrid\" version=\"1.0\" byte_order=\"LittleEndian\" header_type=\"UInt64\">",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 2,
+          "text": "<UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 7,
+          "text": "<DataArray type=\"Float32\" Name=\"Temperature (C)\" format=\"ascii\" RangeMin=\"22.5316\" RangeMax=\"27.2511\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 498,
+          "text": "<DataArray type=\"Float32\" Name=\"Pressure (Pa)\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"0\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 989,
+          "text": "<DataArray type=\"Float32\" Name=\"Velocity (m/s)\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"0\" RangeMax=\"0\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 2458,
+          "text": "<DataArray type=\"Float64\" Name=\"Points\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"0\" RangeMax=\"8.98511\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 4811,
+          "text": "<DataArray type=\"Int64\" Name=\"connectivity\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"4697\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 8720,
+          "text": "<DataArray type=\"Int64\" Name=\"offsets\" format=\"ascii\" RangeMin=\"8\" RangeMax=\"23440\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 9211,
+          "text": "<DataArray type=\"Int64\" Name=\"types\" format=\"ascii\" RangeMin=\"12\" RangeMax=\"12\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 9704,
+          "text": "</UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "data\\raw_cadence_vtk\\case_001\\VTM\\region_2.vtu",
+      "pyvista_hits": [],
+      "xml_hits": [
+        {
+          "xml_tag": "VTKFile",
+          "attribute": "type",
+          "value": "UnstructuredGrid",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ],
+      "raw_text_hits": [
+        {
+          "line": 1,
+          "text": "<VTKFile type=\"UnstructuredGrid\" version=\"1.0\" byte_order=\"LittleEndian\" header_type=\"UInt64\">",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 2,
+          "text": "<UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 7,
+          "text": "<DataArray type=\"Float32\" Name=\"Temperature (C)\" format=\"ascii\" RangeMin=\"22.5664\" RangeMax=\"25.3815\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 498,
+          "text": "<DataArray type=\"Float32\" Name=\"Pressure (Pa)\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"0\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 989,
+          "text": "<DataArray type=\"Float32\" Name=\"Velocity (m/s)\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"0\" RangeMax=\"0\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 2458,
+          "text": "<DataArray type=\"Float64\" Name=\"Points\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"0\" RangeMax=\"18.0591\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 4811,
+          "text": "<DataArray type=\"Int64\" Name=\"connectivity\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"4697\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 8720,
+          "text": "<DataArray type=\"Int64\" Name=\"offsets\" format=\"ascii\" RangeMin=\"8\" RangeMax=\"23440\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 9211,
+          "text": "<DataArray type=\"Int64\" Name=\"types\" format=\"ascii\" RangeMin=\"12\" RangeMax=\"12\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 9704,
+          "text": "</UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "data\\raw_cadence_vtk\\case_001\\VTM\\region_3.vtu",
+      "pyvista_hits": [],
+      "xml_hits": [
+        {
+          "xml_tag": "VTKFile",
+          "attribute": "type",
+          "value": "UnstructuredGrid",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ],
+      "raw_text_hits": [
+        {
+          "line": 1,
+          "text": "<VTKFile type=\"UnstructuredGrid\" version=\"1.0\" byte_order=\"LittleEndian\" header_type=\"UInt64\">",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 2,
+          "text": "<UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 7,
+          "text": "<DataArray type=\"Float32\" Name=\"Temperature (C)\" format=\"ascii\" RangeMin=\"21.6919\" RangeMax=\"26.9652\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 2079,
+          "text": "<DataArray type=\"Float32\" Name=\"Pressure (Pa)\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"0\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 4151,
+          "text": "<DataArray type=\"Float32\" Name=\"Velocity (m/s)\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"0\" RangeMax=\"0\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 10365,
+          "text": "<DataArray type=\"Float64\" Name=\"Points\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"0\" RangeMax=\"18.0091\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 19939,
+          "text": "<DataArray type=\"Int64\" Name=\"connectivity\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"19139\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 36501,
+          "text": "<DataArray type=\"Int64\" Name=\"offsets\" format=\"ascii\" RangeMin=\"8\" RangeMax=\"99360\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 38573,
+          "text": "<DataArray type=\"Int64\" Name=\"types\" format=\"ascii\" RangeMin=\"12\" RangeMax=\"12\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 40647,
+          "text": "</UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "data\\raw_cadence_vtk\\case_001\\VTM\\region_4.vtu",
+      "pyvista_hits": [],
+      "xml_hits": [
+        {
+          "xml_tag": "VTKFile",
+          "attribute": "type",
+          "value": "UnstructuredGrid",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ],
+      "raw_text_hits": [
+        {
+          "line": 1,
+          "text": "<VTKFile type=\"UnstructuredGrid\" version=\"1.0\" byte_order=\"LittleEndian\" header_type=\"UInt64\">",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 2,
+          "text": "<UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "line": 7,
+          "text": "<DataArray type=\"Float32\" Name=\"Temperature (C)\" format=\"ascii\" RangeMin=\"22.5223\" RangeMax=\"25.6844\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 1121,
+          "text": "<DataArray type=\"Float32\" Name=\"Pressure (Pa)\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"0\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 2235,
+          "text": "<DataArray type=\"Float32\" Name=\"Velocity (m/s)\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"0\" RangeMax=\"0\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 5574,
+          "text": "<DataArray type=\"Float64\" Name=\"Points\" NumberOfComponents=\"3\" format= \"ascii\" RangeMin=\"2.2\" RangeMax=\"18.0091\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 10798,
+          "text": "<DataArray type=\"Int64\" Name=\"connectivity\" format=\"ascii\" RangeMin=\"0\" RangeMax=\"10439\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 19694,
+          "text": "<DataArray type=\"Int64\" Name=\"offsets\" format=\"ascii\" RangeMin=\"8\" RangeMax=\"53360\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 20808,
+          "text": "<DataArray type=\"Int64\" Name=\"types\" format=\"ascii\" RangeMin=\"12\" RangeMax=\"12\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 21924,
+          "text": "</UnstructuredGrid>",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "data\\raw_cadence_vtk\\case_001\\result.vtk",
+      "pyvista_hits": [],
+      "xml_hits": [],
+      "raw_text_hits": [
+        {
+          "line": 5,
+          "text": "DATASET UNSTRUCTURED_GRID",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "data\\raw_cadence_vtk\\case_001\\result.vtm",
+      "pyvista_hits": [],
+      "xml_hits": [
+        {
+          "xml_tag": "DataSet",
+          "attribute": "name",
+          "value": "Left Side Partition Wall volume",
+          "matched_keywords": [
+            "id"
+          ]
+        },
+        {
+          "xml_tag": "DataSet",
+          "attribute": "name",
+          "value": "Right Side Partition Wall volume",
+          "matched_keywords": [
+            "id"
+          ]
+        }
+      ],
+      "raw_text_hits": [
+        {
+          "line": 3,
+          "text": "<DataSet index=\"0\" name=\"Flow_Region_0\" file=\"VTM/region_0.vtu\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 5,
+          "text": "<DataSet index=\"1\" name=\"Start Partition Wall volume\" file=\"VTM/region_1.vtu\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 7,
+          "text": "<DataSet index=\"2\" name=\"End Partition Wall volume\" file=\"VTM/region_2.vtu\">",
+          "matched_keywords": [
+            "name"
+          ]
+        },
+        {
+          "line": 9,
+          "text": "<DataSet index=\"3\" name=\"Left Side Partition Wall volume\" file=\"VTM/region_3.vtu\">",
+          "matched_keywords": [
+            "name",
+            "id"
+          ]
+        },
+        {
+          "line": 11,
+          "text": "<DataSet index=\"4\" name=\"Right Side Partition Wall volume\" file=\"VTM/region_4.vtu\">",
+          "matched_keywords": [
+            "name",
+            "id"
+          ]
+        }
+      ]
+    }
+  ]
+}
