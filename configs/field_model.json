@@ -1,0 +1,19 @@
+{
+  "data_dir": "data/tensors",
+  "model_path": "models/best_physicsnemo_unet.pt",
+  "stats_path": "data/metadata/dataset_stats.json",
+  "model_name": "physicsnemo_unet",
+  "model": {
+    "model_depth": 3,
+    "feature_map_channels": [16, 16, 32, 32, 64, 64],
+    "num_conv_blocks": 2,
+    "pooling_type": "MaxPool3d",
+    "normalization": "groupnorm",
+    "gradient_checkpointing": false
+  },
+  "epochs": 300,
+  "batch_size": 1,
+  "learning_rate": 0.001,
+  "base_channels": 16,
+  "log_every": 25
+}

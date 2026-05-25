@@ -1,0 +1,6 @@
+numpy
+pandas
+pyvista
+torch
+nvidia-physicsnemo
+warp-lang==1.12.1
