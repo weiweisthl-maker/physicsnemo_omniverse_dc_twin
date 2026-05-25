@@ -1,4 +1,5 @@
 import re
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -6,6 +7,12 @@ import numpy as np
 import pandas as pd
 import pyvista as pv
 from pandas.errors import EmptyDataError
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from physicsnemo_dc_twin.rack_mapping import ensure_standard_rack_loads
 
 
 # ============================================================
@@ -599,12 +606,10 @@ def convert_one_case(case_dir: Path):
     print("=" * 100)
 
     if not rack_csv.exists():
-        raise FileNotFoundError(
-            f"Missing rack load file: {rack_csv}\n\n"
-            "Please create rack_loads.csv with this format:\n"
-            "rack_id,x_min,x_max,y_min,y_max,z_min,z_max,heat_kw\n"
-            "TEST_LOAD_ZONE,4.5,7.6,0.0,4.8,8.9,18.1,50\n"
-        )
+        print(f"\nMissing standard rack load file: {rack_csv}")
+        print("Trying to generate it from Cadence rack load export and VTM geometry...")
+        rack_csv = ensure_standard_rack_loads(case_dir)
+        print(f"Generated standard rack load file: {rack_csv}")
 
     mesh = read_cadence_case_mesh(case_dir)
 

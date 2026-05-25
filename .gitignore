@@ -4,5 +4,6 @@ __pycache__/
 .venv/
 .uv-cache/
 .uv-python/
+.pip-cache/
 .warp-cache/
 venv/
