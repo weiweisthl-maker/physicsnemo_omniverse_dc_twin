@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from physicsnemo_dc_twin.rack_mapping import ensure_standard_rack_loads
+from physicsnemo_dc_twin.rack_mapping import ensure_project_rack_layout, ensure_standard_rack_loads
 
 
 # ============================================================
@@ -675,6 +675,9 @@ def main():
     print(f"\nFound {len(case_dirs)} case folders:")
     for p in case_dirs:
         print(f"  - {p.name}")
+
+    layout_path = ensure_project_rack_layout(case_dirs[0])
+    print(f"\nRack geometry layout: {layout_path}")
 
     for case_dir in case_dirs:
         convert_one_case(case_dir)

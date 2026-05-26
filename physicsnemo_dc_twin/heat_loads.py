@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 from pandas.errors import EmptyDataError
 
+from .rack_mapping import DEFAULT_RACK_LAYOUT_PATH, standardize_rack_load_file
+
 
 REQUIRED_RACK_COLUMNS = [
     "rack_id",
@@ -27,13 +29,18 @@ def read_rack_loads(rack_csv: Path):
 
     missing = [c for c in REQUIRED_RACK_COLUMNS if c not in racks.columns]
     if missing:
-        raise RuntimeError(
-            f"{rack_csv} missing columns: {missing}. "
-            f"Required columns: {REQUIRED_RACK_COLUMNS}"
-        )
+        racks = standardize_rack_load_file(rack_csv, DEFAULT_RACK_LAYOUT_PATH)
     if racks.empty:
         raise RuntimeError(f"{rack_csv} has header but no rows.")
-    return racks
+
+    missing = [c for c in REQUIRED_RACK_COLUMNS if c not in racks.columns]
+    if missing:
+        raise RuntimeError(
+            f"{rack_csv} missing columns after standardization: {missing}. "
+            f"Required columns: {REQUIRED_RACK_COLUMNS}"
+        )
+
+    return racks[REQUIRED_RACK_COLUMNS].copy()
 
 
 def build_heat_load_field(rack_csv: Path, x, y, z, verbose: bool = True):

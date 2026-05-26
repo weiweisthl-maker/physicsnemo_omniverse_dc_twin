@@ -4,6 +4,7 @@ import numpy as np
 import torch
 
 from .checkpoints import load_checkpoint
+from .metrics import compute_validation_metrics, save_metrics
 from .models import build_model
 from .vtk_export import export_structured_prediction
 
@@ -41,6 +42,7 @@ def export_validation_case(model_path: Path, tensor_case: Path, out_dir: Path):
     case_name = tensor_case.stem
     out_dir.mkdir(parents=True, exist_ok=True)
     out_npz = out_dir / f"{case_name}_validation.npz"
+    out_metrics = out_dir / f"{case_name}_validation_metrics.json"
     out_vtk = out_dir / f"{case_name}_validation.vtk"
     out_vtu = out_dir / f"{case_name}_validation.vtu"
 
@@ -71,11 +73,18 @@ def export_validation_case(model_path: Path, tensor_case: Path, out_dir: Path):
         out_vtk,
         out_vtu,
     )
+    metrics = compute_validation_metrics(true_v, pred_v, valid, x, y, z)
+    save_metrics(metrics, out_metrics)
 
     print("\nValidation export summary:")
     print(f"  Case: {tensor_case}")
-    print(f"  MAE valid: {np.nanmean(abs_error):.3f} C")
-    print(f"  Max abs error valid: {np.nanmax(abs_error):.3f} C")
+    print(f"  MAE valid: {metrics['mae_C']:.3f} C")
+    print(f"  RMSE valid: {metrics['rmse_C']:.3f} C")
+    print(f"  P95 abs error: {metrics['p95_abs_error_C']:.3f} C")
+    print(f"  P99 abs error: {metrics['p99_abs_error_C']:.3f} C")
+    print(f"  Max abs error valid: {metrics['max_abs_error_C']:.3f} C")
+    print(f"  Hotspot location error: {metrics['hotspot']['location_error_m']:.3f} m")
     print(f"  Saved NPZ: {out_npz}")
+    print(f"  Saved metrics: {out_metrics}")
     print(f"  Saved VTK: {out_vtk}")
     print(f"  Saved VTU: {out_vtu}")

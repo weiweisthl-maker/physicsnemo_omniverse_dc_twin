@@ -12,6 +12,17 @@ RACK_LOAD_EXPORT_CANDIDATES = [
     "rack_it_load.csv",
     "rack_load.csv",
 ]
+DEFAULT_RACK_LAYOUT_PATH = Path("data/metadata/rack_layout.csv")
+STANDARD_RACK_COLUMNS = [
+    "rack_id",
+    "x_min",
+    "x_max",
+    "y_min",
+    "y_max",
+    "z_min",
+    "z_max",
+    "heat_kw",
+]
 
 
 @dataclass(frozen=True)
@@ -74,6 +85,44 @@ def read_rack_load_export(path: Path) -> pd.DataFrame:
         raise RuntimeError(f"No rack load rows found in {path}")
 
     return loads
+
+
+def read_rack_layout(path: Path = DEFAULT_RACK_LAYOUT_PATH) -> pd.DataFrame:
+    if not path.exists():
+        raise FileNotFoundError(f"Rack layout file not found: {path}")
+
+    layout = pd.read_csv(path)
+    required = [c for c in STANDARD_RACK_COLUMNS if c != "heat_kw"]
+    missing = [c for c in required if c not in layout.columns]
+    if missing:
+        raise RuntimeError(f"{path} missing columns: {missing}")
+
+    layout = layout[required].copy()
+    layout["rack_id"] = layout["rack_id"].astype(str).str.strip()
+    for col in required[1:]:
+        layout[col] = pd.to_numeric(layout[col], errors="raise")
+
+    return layout.sort_values("rack_id", key=lambda s: s.map(natural_sort_key)).reset_index(drop=True)
+
+
+def combine_rack_layout_and_loads(layout: pd.DataFrame, loads: pd.DataFrame) -> pd.DataFrame:
+    merged = layout.merge(loads, on="rack_id", how="left", validate="one_to_one")
+    missing_loads = merged.loc[merged["heat_kw"].isna(), "rack_id"].tolist()
+    if missing_loads:
+        raise RuntimeError(f"Missing load values for rack IDs: {missing_loads}")
+
+    extra_loads = sorted(set(loads["rack_id"]) - set(layout["rack_id"]), key=natural_sort_key)
+    if extra_loads:
+        raise RuntimeError(f"Load file contains rack IDs not present in layout: {extra_loads}")
+
+    return merged[STANDARD_RACK_COLUMNS].copy()
+
+
+def write_rack_layout(layout: pd.DataFrame, path: Path = DEFAULT_RACK_LAYOUT_PATH) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    cols = [c for c in STANDARD_RACK_COLUMNS if c != "heat_kw"]
+    layout[cols].to_csv(path, index=False)
+    return path
 
 
 def _parse_vtm_datasets(case_dir: Path):
@@ -208,11 +257,54 @@ def build_rack_layout_from_export(
     return pd.DataFrame(rows)
 
 
-def ensure_standard_rack_loads(case_dir: Path, output_name: str = "rack_loads.csv") -> Path:
+def infer_project_rack_layout(case_dir: Path, load_csv: Path | None = None) -> pd.DataFrame:
+    layout_with_load = build_rack_layout_from_export(case_dir, load_csv=load_csv)
+    return layout_with_load[[c for c in STANDARD_RACK_COLUMNS if c != "heat_kw"]].copy()
+
+
+def ensure_project_rack_layout(
+    case_dir: Path,
+    layout_path: Path = DEFAULT_RACK_LAYOUT_PATH,
+) -> Path:
+    if layout_path.exists():
+        return layout_path
+
+    layout = infer_project_rack_layout(case_dir)
+    return write_rack_layout(layout, layout_path)
+
+
+def standardize_rack_load_file(
+    load_csv: Path,
+    layout_path: Path = DEFAULT_RACK_LAYOUT_PATH,
+) -> pd.DataFrame:
+    raw = pd.read_csv(load_csv)
+    if all(c in raw.columns for c in STANDARD_RACK_COLUMNS):
+        return raw[STANDARD_RACK_COLUMNS].copy()
+
+    loads = read_rack_load_export(load_csv)
+    layout = read_rack_layout(layout_path)
+    return combine_rack_layout_and_loads(layout, loads)
+
+
+def ensure_standard_rack_loads(
+    case_dir: Path,
+    output_name: str = "rack_loads.csv",
+    layout_path: Path = DEFAULT_RACK_LAYOUT_PATH,
+) -> Path:
     standard_path = case_dir / output_name
     if standard_path.exists():
         return standard_path
 
-    layout = build_rack_layout_from_export(case_dir)
+    load_csv = find_rack_load_export(case_dir)
+    if load_csv is None:
+        raise FileNotFoundError(
+            f"No rack load export found in {case_dir}. "
+            f"Tried: {RACK_LOAD_EXPORT_CANDIDATES}"
+        )
+
+    if not layout_path.exists():
+        ensure_project_rack_layout(case_dir, layout_path)
+
+    layout = standardize_rack_load_file(load_csv, layout_path)
     layout.to_csv(standard_path, index=False)
     return standard_path
